@@ -9,28 +9,36 @@ import java.util.stream.Collectors;
 
 public class NumbersParser {
 
-    private Pattern pattern;
-    private Matcher matcher;
-    private String delimiter;
+    private Pattern delimiterDefinitionPattern;
+    private Matcher delimiterDefinitionMatcher;
+    private String delimiterRegex;
 
     public NumbersParser() {
-        this.delimiter = "[\n,]";
-        this.pattern = Pattern.compile("//\\[([^\\d]*)\\]\n(.*)");
+        this.delimiterRegex = "[\n,]";
+        this.delimiterDefinitionPattern = Pattern.compile("//(\\[[^\\d]*\\])\n(.*)");
     }
 
     public List<Integer> parse(String numbers) {
-        if (hasCustomDelimiter(numbers)) {
-            delimiter = matcher.group(1).toString();
-            numbers = matcher.group(2).toString();
+        if (hasCustomDelimiterDefinition(numbers)) {
+            delimiterRegex = buildDelimiterRegex();
+            numbers = getNumbers();
         }
-        return Arrays.stream(numbers.split(delimiter))
+        return Arrays.stream(numbers.split(delimiterRegex))
                 .map(stringToInteger())
                 .collect(Collectors.toList());
     }
 
-    private boolean hasCustomDelimiter(String numbers) {
-        matcher = pattern.matcher(numbers);
-        return matcher.find();
+    private boolean hasCustomDelimiterDefinition(String numbers) {
+        delimiterDefinitionMatcher = delimiterDefinitionPattern.matcher(numbers);
+        return delimiterDefinitionMatcher.find();
+    }
+
+    private String getNumbers() {
+        return delimiterDefinitionMatcher.group(2).toString();
+    }
+
+    private String buildDelimiterRegex() {
+        return "[" + delimiterDefinitionMatcher.group(1).toString().replaceAll("[\\[\\]]", "") + "]";
     }
 
     private Function<String, Integer> stringToInteger() {

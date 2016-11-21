@@ -20,8 +20,8 @@ public class ParseNumbersTest {
         assertEquals(Arrays.asList(4,5,6), new NumbersParser().parse("//[:::]\n4:::5:::6"));
     }
 
-    @Test@Ignore
+    @Test
     public void multipleDelimiters() throws Exception {
-        assertEquals(Arrays.asList(7,8,9), new NumbersParser().parse("//[*][%]\n7*8%9"));
+        assertEquals(Arrays.asList(7,8,9), new NumbersParser().parse("//[;][:]\n7;8:9"));
     }
 }
