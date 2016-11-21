@@ -15,21 +15,17 @@ public class NumbersParser {
 
     public NumbersParser() {
         this.delimiter = "[\n,]";
-        this.pattern = Pattern.compile("//([^\\d]*?)\n");
+        this.pattern = Pattern.compile("//([^\\d]*)\n(.*)");
     }
 
     public List<Integer> parse(String numbers) {
         if (hasCustomDelimiter(numbers)) {
             delimiter = matcher.group(1).toString();
-            numbers = removeDelimiterDefinition(numbers);
+            numbers = matcher.group(2).toString();
         }
         return Arrays.stream(numbers.split(delimiter))
                 .map(stringToInteger())
                 .collect(Collectors.toList());
-    }
-
-    private String removeDelimiterDefinition(String numbers) {
-        return numbers.substring(3 + delimiter.length(), numbers.length());
     }
 
     private boolean hasCustomDelimiter(String numbers) {
