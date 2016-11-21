@@ -33,13 +33,14 @@ public class AddNumbersTest {
                 {-12, "-11,-1"},
                 {0, "3,9,-12"},
                 {33, "0,1,1,2,3,5,8,13"},
-                {6, "1\n2,3"}
+                {6, "1\n2,3"},
+                //{3, "\\;\n1;2"}
         });
     }
 
     @Test
     public void addNumbers() throws Exception {
-        assertEquals(sum, new StringCalculator().add(numbers));
+        assertEquals(sum, new StringCalculator(new StringParser()).add(numbers));
     }
 
 }
