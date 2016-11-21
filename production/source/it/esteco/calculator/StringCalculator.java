@@ -2,6 +2,10 @@ package it.esteco.calculator;
 
 public class StringCalculator {
     public int add(String numbers) {
-        return 0;
+        if (numbers.isEmpty()) {
+            return 0;
+        } else {
+            return Integer.valueOf(numbers);
+        }
     }
 }

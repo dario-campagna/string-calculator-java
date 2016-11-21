@@ -10,7 +10,16 @@ public class AddNumbersTest {
 
     @Test
     public void zeroNumbers() throws Exception {
-        StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(0, stringCalculator.add(""));
+        assertEquals(0, new StringCalculator().add(""));
+    }
+
+    @Test
+    public void oneNumber() throws Exception {
+        assertEquals(1, new StringCalculator().add("1"));
+    }
+
+    @Test
+    public void anotherSingleNumber() throws Exception {
+        assertEquals(2, new StringCalculator().add("2"));
     }
 }
