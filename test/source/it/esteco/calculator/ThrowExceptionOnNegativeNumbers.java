@@ -30,7 +30,7 @@ public class ThrowExceptionOnNegativeNumbers {
         return Arrays.asList(new String[][]{
                 {"Negatives not allowed [-6]", "-6"},
                 {"Negatives not allowed [-5]", "2,-5"},
-                {"Negatives not allowed [-12, -11, -1]", "//:\n-12:-11:-1"}
+                {"Negatives not allowed [-12, -11, -1]", "//[:]\n-12:-11:-1"}
         });
     }
 

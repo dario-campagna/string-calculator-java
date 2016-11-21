@@ -15,7 +15,7 @@ public class NumbersParser {
 
     public NumbersParser() {
         this.delimiter = "[\n,]";
-        this.pattern = Pattern.compile("//([^\\d]*)\n(.*)");
+        this.pattern = Pattern.compile("//\\[([^\\d]*)\\]\n(.*)");
     }
 
     public List<Integer> parse(String numbers) {
