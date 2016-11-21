@@ -1,30 +1,38 @@
 package it.esteco.calculator;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import javax.swing.*;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(Parameterized.class)
 public class AddNumbersTest {
 
-    @Test
-    public void zeroNumbers() throws Exception {
-        assertEquals(0, new StringCalculator().add(""));
+    private int sum;
+    private String numbers;
+
+    public AddNumbersTest(int sum, String numbers) {
+        this.sum = sum;
+        this.numbers = numbers;
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {0, ""},
+                {1, "1"},
+                {12, "12"},
+                {20, "13,7"},
+        });
     }
 
     @Test
-    public void oneNumber() throws Exception {
-        assertEquals(1, new StringCalculator().add("1"));
+    public void addNumbers() throws Exception {
+        assertEquals(sum, new StringCalculator().add(numbers));
     }
 
-    @Test
-    public void anotherSingleNumber() throws Exception {
-        assertEquals(2, new StringCalculator().add("2"));
-    }
-
-    @Test
-    public void twoNumbers() throws Exception {
-        assertEquals(20, new StringCalculator().add("13,7"));
-    }
 }
