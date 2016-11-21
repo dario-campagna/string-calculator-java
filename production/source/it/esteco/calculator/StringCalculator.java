@@ -1,24 +1,28 @@
 package it.esteco.calculator;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
     public int add(String numbersAsText) {
-        int sum = 0;
-        for (Integer number : parse(numbersAsText)) {
-            sum += number;
-        }
-        return sum;
+        return parse(numbersAsText).stream().reduce(0, (a, b) -> a + b);
     }
 
     private List<Integer> parse(String numbersAsText) {
-        List<Integer> integers = new ArrayList<>();
-        for (String number : numbersAsText.split("[\n,]")) {
-            if (!number.isEmpty()) {
-                integers.add(Integer.valueOf(number));
+        return Arrays.stream(numbersAsText.split("[\n,]"))
+                .map(stringToInteger())
+                .collect(Collectors.toList());
+    }
+
+    private Function<String, Integer> stringToInteger() {
+        return number -> {
+            if (number.isEmpty()) {
+                return 0;
+            } else {
+                return Integer.valueOf(number);
             }
-        }
-        return integers;
+        };
     }
 }
