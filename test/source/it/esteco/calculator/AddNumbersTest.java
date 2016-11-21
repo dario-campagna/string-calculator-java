@@ -22,4 +22,9 @@ public class AddNumbersTest {
     public void anotherSingleNumber() throws Exception {
         assertEquals(2, new StringCalculator().add("2"));
     }
+
+    @Test
+    public void twoNumbers() throws Exception {
+        assertEquals(20, new StringCalculator().add("13,7"));
+    }
 }
