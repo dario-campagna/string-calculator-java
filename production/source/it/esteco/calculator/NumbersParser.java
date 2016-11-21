@@ -29,11 +29,10 @@ public class NumbersParser {
     }
 
     private String removeDelimiterDefinition(String numbers) {
-        return numbers.substring(4, numbers.length());
+        return numbers.substring(3 + delimiter.length(), numbers.length());
     }
 
     private boolean hasCustomDelimiter(String numbers) {
-        Pattern pattern = Pattern.compile("//([^\\d]*?)\n");
         matcher = pattern.matcher(numbers);
         return matcher.find();
     }

@@ -16,5 +16,6 @@ public class ParseNumbersTest {
     @Test
     public void customDelimiter() throws Exception {
         assertEquals(Arrays.asList(1,2), new NumbersParser().parse("//;\n1;2"));
+        assertEquals(Arrays.asList(4,5,6), new NumbersParser().parse("//:::\n4:::5:::6"));
     }
 }
