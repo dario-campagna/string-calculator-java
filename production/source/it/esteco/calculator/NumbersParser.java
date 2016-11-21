@@ -7,20 +7,35 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class StringParser {
+public class NumbersParser {
+
+    private Pattern pattern;
+    private Matcher matcher;
+    private String delimiter;
+
+    public NumbersParser() {
+        this.delimiter = "[\n,]";
+        this.pattern = Pattern.compile("//([^\\d]*?)\n");
+    }
 
     public List<Integer> parse(String numbers) {
-        String delimiter = "[\n,]";
-        Pattern pattern = Pattern.compile("//([^\\d]*?)\n");
-        Matcher matcher = pattern.matcher(numbers);
-        if (matcher.find()) {
+        if (hasCustomDelimiter(numbers)) {
             delimiter = matcher.group(1).toString();
-            numbers = numbers.substring(4, numbers.length());
-
+            numbers = removeDelimiterDefinition(numbers);
         }
         return Arrays.stream(numbers.split(delimiter))
                 .map(stringToInteger())
                 .collect(Collectors.toList());
+    }
+
+    private String removeDelimiterDefinition(String numbers) {
+        return numbers.substring(4, numbers.length());
+    }
+
+    private boolean hasCustomDelimiter(String numbers) {
+        Pattern pattern = Pattern.compile("//([^\\d]*?)\n");
+        matcher = pattern.matcher(numbers);
+        return matcher.find();
     }
 
     private Function<String, Integer> stringToInteger() {

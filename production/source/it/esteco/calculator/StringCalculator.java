@@ -2,9 +2,9 @@ package it.esteco.calculator;
 
 public class StringCalculator {
 
-    private StringParser parser;
+    private NumbersParser parser;
 
-    public StringCalculator(StringParser parser) {
+    public StringCalculator(NumbersParser parser) {
         this.parser = parser;
     }
 

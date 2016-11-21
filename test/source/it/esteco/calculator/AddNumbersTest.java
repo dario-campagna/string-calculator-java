@@ -40,7 +40,7 @@ public class AddNumbersTest {
 
     @Test
     public void addNumbers() throws Exception {
-        assertEquals(sum, new StringCalculator(new StringParser()).add(numbers));
+        assertEquals(sum, new StringCalculator(new NumbersParser()).add(numbers));
     }
 
 }

@@ -10,11 +10,11 @@ public class ParseNumbersTest {
 
     @Test
     public void defaultDelimiters() throws Exception {
-        assertEquals(Arrays.asList(1, 2, 3), new StringParser().parse("1,2\n3"));
+        assertEquals(Arrays.asList(1, 2, 3), new NumbersParser().parse("1,2\n3"));
     }
 
     @Test
     public void customDelimiter() throws Exception {
-        assertEquals(Arrays.asList(1,2), new StringParser().parse("//;\n1;2"));
+        assertEquals(Arrays.asList(1,2), new NumbersParser().parse("//;\n1;2"));
     }
 }
