@@ -35,4 +35,9 @@ public class AddNumbersTest {
     public void newlineAsDelimiter() throws Exception {
         assertEquals(6, Calculator.add("1\n2,3"));
     }
+
+    @Test
+    public void customDelimiter() throws Exception {
+        assertEquals(15, Calculator.add("//;\n7;8"));
+    }
 }

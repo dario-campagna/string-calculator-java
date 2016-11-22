@@ -1,6 +1,8 @@
 package it.esteco.calculator;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Calculator {
@@ -11,7 +13,16 @@ public class Calculator {
     }
 
     private static String[] tokenize(String string) {
-        return string.isEmpty() ? new String[0] : string.split(",|\n");
+        if (string.isEmpty()) {
+            return new String[0];
+        } else if (string.startsWith("//")) {
+            Pattern patter = Pattern.compile("//(\\D)\n(.*)");
+            Matcher matcher = patter.matcher(string);
+            matcher.find();
+            return matcher.group(2).split(matcher.group(1));
+        } else {
+            return string.split(",|\n");
+        }
     }
 
     private static IntStream convertToIntegers(String[] tokens) {
