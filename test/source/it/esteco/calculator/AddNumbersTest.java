@@ -61,4 +61,9 @@ public class AddNumbersTest {
 
         Calculator.add("-25\n5,-46");
     }
+
+    @Test
+    public void ignoreIntegersGreaterThanOneThousand() throws Exception {
+        assertEquals(2, Calculator.add("2,1001"));
+    }
 }

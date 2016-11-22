@@ -28,7 +28,8 @@ public class Calculator {
     }
 
     private static List<Integer> convertToIntegers(String[] tokens) {
-        return Arrays.stream(tokens).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).boxed()
+                .filter(integer -> integer < 1001).collect(Collectors.toList());
     }
 
     private static boolean hasNegatives(List<Integer> integers) {
