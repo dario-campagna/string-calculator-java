@@ -15,7 +15,7 @@ public class NumbersParser {
 
     public NumbersParser() {
         this.delimiterRegex = "[\n,]";
-        this.delimiterDefinitionPattern = Pattern.compile("//(\\[[^\\d]*\\])\n(.*)");
+        this.delimiterDefinitionPattern = Pattern.compile("//(\\[.*\\])\n(.*)");
     }
 
     public List<Integer> parse(String numbers) {
@@ -38,7 +38,7 @@ public class NumbersParser {
     }
 
     private String buildDelimiterRegex() {
-        return "[" + delimiterDefinitionMatcher.group(1).toString().replaceAll("[\\[\\]]", "") + "]";
+        return new DelimitersRegex(delimiterDefinitionMatcher.group(1)).toString();
     }
 
     private Function<String, Integer> stringToInteger() {

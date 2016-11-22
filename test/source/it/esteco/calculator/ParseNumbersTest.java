@@ -23,5 +23,6 @@ public class ParseNumbersTest {
     @Test
     public void multipleDelimiters() throws Exception {
         assertEquals(Arrays.asList(7,8,9), new NumbersParser().parse("//[;][:]\n7;8:9"));
+        assertEquals(Arrays.asList(7,8,9), new NumbersParser().parse("//[;;][::]\n7;;8::9"));
     }
 }
