@@ -20,4 +20,9 @@ public class AddNumbersTest {
     public void anotherNumber() throws Exception {
         assertEquals(2, Calculator.add("2"));
     }
+
+    @Test
+    public void twoNumbers() throws Exception {
+        assertEquals(7, Calculator.add("3,4"));
+    }
 }
