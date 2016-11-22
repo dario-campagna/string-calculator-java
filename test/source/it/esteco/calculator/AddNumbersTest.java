@@ -30,4 +30,9 @@ public class AddNumbersTest {
     public void unknownAmountOfNumbers() throws Exception {
         assertEquals(18, Calculator.add("5,6,7"));
     }
+
+    @Test
+    public void newlineAsDelimiter() throws Exception {
+        assertEquals(6, Calculator.add("1\n2,3"));
+    }
 }
