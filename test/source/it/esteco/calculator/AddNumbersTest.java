@@ -25,4 +25,9 @@ public class AddNumbersTest {
     public void twoNumbers() throws Exception {
         assertEquals(7, Calculator.add("3,4"));
     }
+
+    @Test
+    public void unknownAmountOfNumbers() throws Exception {
+        assertEquals(18, Calculator.add("5,6,7"));
+    }
 }
