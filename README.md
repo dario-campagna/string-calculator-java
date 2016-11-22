@@ -1,6 +1,6 @@
 # String Calculator TDD Kata
 
-TDD Kata by Roy Osherove ([original exercise description](http://osherove.com/tdd-kata-1/)).
+TDD Kata by Roy Osherove ([original exercise description](http://osherove.com/tdd-kata-1/)), implemented in Java.
 
 ## Before you start
 
