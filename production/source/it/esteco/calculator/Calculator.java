@@ -18,13 +18,24 @@ public class Calculator {
     }
 
     private static String[] tokenize(String string) {
-        Pattern patter = Pattern.compile("//\\[(\\D+)\\]\n(.*)");
+        Pattern patter = Pattern.compile("//(\\[.*\\])\n(.*)");
         Matcher matcher = patter.matcher(string);
         if (matcher.find()) {
-            return split(matcher.group(2), matcher.group(1));
+            return split(matcher.group(2), buildDelimiterRegex(matcher.group(1)));
         } else {
             return split(string, ",|\n");
         }
+    }
+
+    private static String buildDelimiterRegex(String delimitersDefinition) {
+        Pattern pattern = Pattern.compile("\\[([^\\d\\[\\]]+)\\]");
+        Matcher matcher = pattern.matcher(delimitersDefinition);
+        matcher.find();
+        String regex = matcher.group(1);
+        while (matcher.find()) {
+            regex += "|" + matcher.group(1);
+        }
+        return regex;
     }
 
     private static List<Integer> convertToIntegers(String[] tokens) {
