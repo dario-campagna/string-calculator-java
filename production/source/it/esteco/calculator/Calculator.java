@@ -13,15 +13,20 @@ public class Calculator {
     }
 
     private static String[] tokenize(String string) {
+        Pattern patter = Pattern.compile("//(\\D)\n(.*)");
+        Matcher matcher = patter.matcher(string);
+        if (matcher.find()) {
+            return split(matcher.group(2), matcher.group(1));
+        } else {
+            return split(string, ",|\n");
+        }
+    }
+
+    private static String[] split(String string, String regex) {
         if (string.isEmpty()) {
             return new String[0];
-        } else if (string.startsWith("//")) {
-            Pattern patter = Pattern.compile("//(\\D)\n(.*)");
-            Matcher matcher = patter.matcher(string);
-            matcher.find();
-            return matcher.group(2).split(matcher.group(1));
         } else {
-            return string.split(",|\n");
+            return string.split(regex);
         }
     }
 
