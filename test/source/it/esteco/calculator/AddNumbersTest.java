@@ -43,7 +43,7 @@ public class AddNumbersTest {
 
     @Test
     public void customDelimiter() throws Exception {
-        assertEquals(15, Calculator.add("//;\n7;8"));
+        assertEquals(15, Calculator.add("//[;]\n7;8"));
     }
 
     @Test
@@ -65,5 +65,10 @@ public class AddNumbersTest {
     @Test
     public void ignoreIntegersGreaterThanOneThousand() throws Exception {
         assertEquals(2, Calculator.add("2,1001"));
+    }
+
+    @Test
+    public void customDelimiterOfMoreThanOneChar() throws Exception {
+        assertEquals(10, Calculator.add("//[---]\n3---6---1"));
     }
 }
