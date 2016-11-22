@@ -1,15 +1,22 @@
 package it.esteco.calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Calculator {
-    public static int add(String string) {
+    public static int add(String string) throws Exception {
         String[] tokens = tokenize(string);
-        IntStream intStream = convertToIntegers(tokens);
-        return intStream.reduce(0, (a, b) -> a + b);
+        List<Integer> integers = convertToIntegers(tokens);
+        List<Integer> negatives = integers.stream().filter(integer -> integer < 0).collect(Collectors.toList());
+        if (negatives.size() == 0) {
+            return integers.stream().reduce(0, (a, b) -> a + b);
+        } else {
+            throw new Exception("Negatives not allowed " + negatives);
+        }
     }
 
     private static String[] tokenize(String string) {
@@ -30,7 +37,7 @@ public class Calculator {
         }
     }
 
-    private static IntStream convertToIntegers(String[] tokens) {
-        return Arrays.stream(tokens).mapToInt(Integer::parseInt);
+    private static List<Integer> convertToIntegers(String[] tokens) {
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     }
 }

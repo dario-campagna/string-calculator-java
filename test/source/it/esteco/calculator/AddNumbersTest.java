@@ -1,10 +1,15 @@
 package it.esteco.calculator;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class AddNumbersTest {
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void noNumbers() throws Exception {
@@ -39,5 +44,21 @@ public class AddNumbersTest {
     @Test
     public void customDelimiter() throws Exception {
         assertEquals(15, Calculator.add("//;\n7;8"));
+    }
+
+    @Test
+    public void throwsExceptionWithOneNegative() throws Exception {
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("Negatives not allowed [-6]");
+
+        Calculator.add("-6");
+    }
+
+    @Test
+    public void throwsExeptionWithMoreThanOneNegative() throws Exception {
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("Negatives not allowed [-25, -46]");
+
+        Calculator.add("-25\n5,-46");
     }
 }
