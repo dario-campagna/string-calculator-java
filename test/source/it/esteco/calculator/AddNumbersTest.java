@@ -73,7 +73,12 @@ public class AddNumbersTest {
     }
 
     @Test
-    public void multipleCustomDelimiterOfOneChar() throws Exception {
+    public void multipleCustomDelimitersOfOneChar() throws Exception {
         assertEquals(30, Calculator.add("//[#][°]\n15#5°10"));
+    }
+
+    @Test
+    public void multipleCustomDelimitersOfMoreThanOneChar() throws Exception {
+        assertEquals(40, Calculator.add("//[:::][---][,,,]\n15:::5---10,,,10"));
     }
 }
