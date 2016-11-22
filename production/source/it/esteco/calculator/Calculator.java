@@ -5,7 +5,7 @@ public class Calculator {
         if (string.isEmpty()) {
             return 0;
         } else {
-            return 1;
+            return Integer.valueOf(string);
         }
     }
 }

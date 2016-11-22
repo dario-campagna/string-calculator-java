@@ -15,4 +15,9 @@ public class AddNumbersTest {
     public void oneNumber() throws Exception {
         assertEquals(1, Calculator.add("1"));
     }
+
+    @Test
+    public void anotherNumber() throws Exception {
+        assertEquals(2, Calculator.add("2"));
+    }
 }
