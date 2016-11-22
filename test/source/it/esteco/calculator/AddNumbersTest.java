@@ -10,4 +10,9 @@ public class AddNumbersTest {
     public void noNumbers() throws Exception {
         assertEquals(0, Calculator.add(""));
     }
+
+    @Test
+    public void oneNumber() throws Exception {
+        assertEquals(1, Calculator.add("1"));
+    }
 }
