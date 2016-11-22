@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DelimitersRegexTest {
+public class BuildDelimitersRegexTest {
 
     @Test
     public void singleDelimiter() throws Exception {

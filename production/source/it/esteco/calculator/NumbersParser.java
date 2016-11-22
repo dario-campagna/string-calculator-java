@@ -33,12 +33,12 @@ public class NumbersParser {
         return delimiterDefinitionMatcher.find();
     }
 
-    private String getNumbers() {
-        return delimiterDefinitionMatcher.group(2).toString();
-    }
-
     private String buildDelimiterRegex() {
         return new DelimitersRegex(delimiterDefinitionMatcher.group(1)).toString();
+    }
+
+    private String getNumbers() {
+        return delimiterDefinitionMatcher.group(2);
     }
 
     private Function<String, Integer> stringToInteger() {

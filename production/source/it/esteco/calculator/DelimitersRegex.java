@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class DelimitersRegex {
 
-    private List<String> delimiters = new ArrayList<>();
+    private final List<String> delimiters = new ArrayList<>();
 
     public DelimitersRegex(String string) {
         Pattern patter = Pattern.compile("\\[([^\\d\\[\\]]+)\\]");
