@@ -1,4 +1,4 @@
-# String Calculator TDD Kata in Java
+# String Calculator TDD Kata
 
 TDD Kata by Roy Osherove ([original exercise description](http://osherove.com/tdd-kata-1/)).
 
