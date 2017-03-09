@@ -44,6 +44,7 @@ public class AddNumbersTest {
     @Test
     public void customDelimiter() throws Exception {
         assertEquals(15, Calculator.add("//[;]\n7;8"));
+        assertEquals(15, Calculator.add("//[\n]\n7\n8"));
     }
 
     @Test
@@ -70,6 +71,7 @@ public class AddNumbersTest {
     @Test
     public void customDelimiterOfMoreThanOneChar() throws Exception {
         assertEquals(10, Calculator.add("//[---]\n3---6---1"));
+        assertEquals(10, Calculator.add("//[\n\n]\n3\n\n6\n\n1"));
     }
 
     @Test

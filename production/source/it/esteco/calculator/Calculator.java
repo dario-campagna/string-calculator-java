@@ -18,7 +18,7 @@ public class Calculator {
     }
 
     private static String[] tokenize(String string) {
-        Pattern patter = Pattern.compile("//(\\[.*\\])\n(.*)");
+        Pattern patter = Pattern.compile("//(\\[\\D*\\])\n([\\s\\S]*)");
         Matcher matcher = patter.matcher(string);
         if (matcher.find()) {
             return split(matcher.group(2), buildDelimiterRegex(matcher.group(1)));
