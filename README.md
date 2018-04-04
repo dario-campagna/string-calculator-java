@@ -16,7 +16,7 @@ TDD Kata by Roy Osherove ([original exercise description](http://osherove.com/td
  * Remember to solve things as simply as possible so that you force yourself to write tests you did not think about.
  * Remember to refactor after each passing test.
 2. Allow the `add` method to handle an unknown amount of numbers.
-3. Allow the Add method to handle new lines between numbers (instead of commas).
+3. Allow the `add` method to handle new lines between numbers (instead of commas).
  * The following input is **ok**: `“1\n2,3”` (will equal 6).
  * The following input is **not ok**: `“1,\n”` (not need to prove it - just clarifying).
 4. Support different delimiters.
