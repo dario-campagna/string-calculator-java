@@ -18,8 +18,7 @@ public class DelimitersRegex {
     }
 
     private void findAllDelimiters(String string) {
-        Pattern pattern = Pattern.compile("\\[([^\\[\\]]+)\\]");
-        Matcher matcher = pattern.matcher(string);
+        Matcher matcher = Pattern.compile("\\[([^\\[\\]]+)\\]").matcher(string);
         while (matcher.find()) {
             delimiters.add(matcher.group(1));
         }
