@@ -10,10 +10,14 @@ public class DelimitersRegex {
     private final List<String> delimiters = new ArrayList<>();
 
     public DelimitersRegex(String string) {
-        Pattern patter = Pattern.compile("\\[([^\\d\\[\\]]+)\\]");
-        Matcher matcher = patter.matcher(string);
-        while (matcher.find()) {
-            delimiters.add(matcher.group(1));
+        if (string.startsWith("[")) {
+            Pattern patter = Pattern.compile("\\[([^\\[\\]]+)\\]");
+            Matcher matcher = patter.matcher(string);
+            while (matcher.find()) {
+                delimiters.add(matcher.group(1));
+            }
+        } else {
+            delimiters.add(string);
         }
     }
 

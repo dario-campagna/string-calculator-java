@@ -12,7 +12,7 @@ public class StringCalculator {
     }
 
     public int add(String numbersAsText) throws Exception {
-        List<Integer> integers = getNumbersGreaterThanOneThousand(numbersAsText);
+        List<Integer> integers = getNumbersLessThanOneThousandOne(numbersAsText);
         List<Integer> negatives = getNegativeIntegers(integers);
         if (negatives.isEmpty()) {
             return integers.stream().reduce(0, (a, b) -> a + b);
@@ -21,7 +21,7 @@ public class StringCalculator {
         }
     }
 
-    private List<Integer> getNumbersGreaterThanOneThousand(String numbersAsText) {
+    private List<Integer> getNumbersLessThanOneThousandOne(String numbersAsText) {
         return parser.parse(numbersAsText).stream().filter(integer -> integer < 1001).collect(Collectors.toList());
     }
 
