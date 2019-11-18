@@ -11,22 +11,22 @@ public class DelimitersRegex {
 
     public DelimitersRegex(String string) {
         if (string.startsWith("[")) {
-            Pattern patter = Pattern.compile("\\[([^\\[\\]]+)\\]");
-            Matcher matcher = patter.matcher(string);
-            while (matcher.find()) {
-                delimiters.add(matcher.group(1));
-            }
+            findAllDelimiters(string);
         } else {
             delimiters.add(string);
         }
     }
 
+    private void findAllDelimiters(String string) {
+        Pattern patter = Pattern.compile("\\[([^\\[\\]]+)\\]");
+        Matcher matcher = patter.matcher(string);
+        while (matcher.find()) {
+            delimiters.add(matcher.group(1));
+        }
+    }
+
     @Override
     public String toString() {
-        String delimitersAsText = delimiters.remove(0);
-        for (String delimiter : delimiters) {
-            delimitersAsText += "|" + delimiter;
-        }
-        return delimitersAsText;
+        return String.join("|", delimiters);
     }
 }

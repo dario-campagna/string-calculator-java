@@ -42,12 +42,6 @@ public class NumbersParser {
     }
 
     private Function<String, Integer> stringToInteger() {
-        return number -> {
-            if (number.isEmpty()) {
-                return 0;
-            } else {
-                return Integer.valueOf(number);
-            }
-        };
+        return number -> number.isEmpty() ? 0 : Integer.valueOf(number);
     }
 }
