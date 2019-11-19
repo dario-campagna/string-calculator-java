@@ -1,6 +1,5 @@
 package it.esteco.calculator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -23,7 +22,8 @@ public class NumbersParser {
             delimiterRegex = buildDelimiterRegex();
             numbers = getNumbers();
         }
-        return Arrays.stream(numbers.split(delimiterRegex))
+        return Pattern.compile(delimiterRegex)
+                .splitAsStream(numbers)
                 .map(stringToInteger())
                 .collect(Collectors.toList());
     }
