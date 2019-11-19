@@ -10,7 +10,7 @@ public class DelimitersRegex {
     private final List<String> delimiters = new ArrayList<>();
 
     public DelimitersRegex(String string) {
-        if (string.startsWith("[")) {
+        if (string.startsWith("[") && string.endsWith("]")) {
             findAllDelimiters(string);
         } else {
             delimiters.add(string);
